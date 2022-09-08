@@ -1,6 +1,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
+var testArray = ['test1', 'test2']
+
 inquirer
   .prompt([
     {
@@ -30,23 +32,31 @@ inquirer
     },
     {
      type: 'input',
-     message: 'Provide instructions and examples for use.',
-     name: 'usage',
+     message: 'Go the extra mile and write tests for your application. Then provide examples on how to run them here.',
+     name: 'tests',
     },
     {
      type: 'input',
-     message: 'Provide instructions and examples for use.',
-     name: 'usage',
+     message: 'Please include you GitHub username.',
+     name: 'github',
     },
     {
      type: 'input',
-     message: 'Provide instructions and examples for use.',
-     name: 'usage',
-    },    
+     message: 'Please provide a good contact email.',
+     name: 'email',
+    },
+
+    {
+     type: 'list',
+     message: 'The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project.',
+     name: 'license',
+     choices: testArray
+
+    },
   ])
   .then((data) => {
     const filename = `${data.projectTitle.toLowerCase().split(' ').join('')}.txt`;
-    readMe = `# ${projectTitle}
+    readMe = `# ${data.projectTitle}
 
     ## Description
     
@@ -78,7 +88,7 @@ inquirer
     
     ## License
     
-    The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
+     ${data.license} If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
     
     ---
     
@@ -99,9 +109,13 @@ inquirer
     ${data.guidelines}
     
     ## Tests
-    
-    Go the extra mile and write tests for your application. Then provide examples on how to run them here.`
-    fs.writeFile(filename, txt, (err) =>
+    ${data.tests}
+
+    ## Questions?
+    https://github.com/${data.github}
+    Email me at ${data.email}
+    `
+    fs.writeFile(filename, readMe, (err) =>
       err ? console.log(err) : console.log('Success!')
     );
   });

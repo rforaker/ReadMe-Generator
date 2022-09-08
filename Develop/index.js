@@ -76,45 +76,46 @@ inquirer
   ])
   .then((data) => {
     const filename = `README.md`;
-    readMe = `# ${data.projectTitle}
+    readMe = `
+  # ${data.projectTitle}
 
-    ## Description
+  ## Description
     
     ${data.description}
     
-    ## Table of Contents
-    - [Description](#description)
-    - [Installation](#installation)
-    - [Usage](#usage)
-    - [Credits](#credits)
-    - [License](#license)
-    - [Questions](#questions)
+  ## Table of Contents
+  - [Description](#description)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Credits](#credits)
+  - [License](#license)
+  - [Questions](#questions)
     
-    ## Installation
+  ## Installation
     
-    ${data.installation}
+  ${data.installation}
     
-    ## Usage
+  ## Usage
     
-    ${data.usage}
+  ${data.usage}
     
-    ## License
+  ## License
     
-     This project is licensed under the ${data.license} license.
+    This project is licensed under the ${data.license} license.
     
-    ---
+  ---
     
-    ## How to Contribute
+  ## How to Contribute
     
-    ${data.guidelines}
+  ${data.guidelines}
     
-    ## Tests
-    ${data.tests}
+  ## Tests
+  ${data.tests}
 
-    ## Questions?
-    https://github.com/${data.github}
-    Email me at ${data.email}
-    `
+  ## Questions?
+  https://github.com/${data.github}
+  Email me at ${data.email}
+  `
     fs.writeFile(filename, readMe, (err) =>
       err ? console.log(err) : console.log('Success!')
     );

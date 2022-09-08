@@ -87,8 +87,9 @@ inquirer
   - [Description](#description)
   - [Installation](#installation)
   - [Usage](#usage)
-  - [Credits](#credits)
   - [License](#license)
+  - [Contribute](#contribute)
+  - [Tests](#tests)
   - [Questions](#questions)
     
   ## Installation

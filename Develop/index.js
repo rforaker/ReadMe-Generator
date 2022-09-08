@@ -1,7 +1,28 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-var testArray = ['test1', 'test2']
+const MIT = {
+  name: 'MIT',
+  badge: '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)',
+  info: 'Test'
+}
+const GNUGPLv3 = {
+  name: 'GNUGPLv3',
+  badge:'[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)',
+}
+const MozillaPublicLicense2 = {
+  name: 'Mozilla Public License 2.0',
+  badge: '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)',
+}
+const ApacheLicense2 = {
+  name:'Apache License 2.0',
+  badge: '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)',
+}
+const TheUnlicense = {
+  name:'The Unlicense',
+  badge: '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)',
+}
+const testArray = [MIT, GNUGPLv3, MozillaPublicLicense2, ApacheLicense2, TheUnlicense]
 
 inquirer
   .prompt([
@@ -51,7 +72,6 @@ inquirer
      message: 'The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project.',
      name: 'license',
      choices: testArray
-
     },
   ])
   .then((data) => {
@@ -63,11 +83,12 @@ inquirer
     ${data.description}
     
     ## Table of Contents
-
+    - [Description](#description)
     - [Installation](#installation)
     - [Usage](#usage)
     - [Credits](#credits)
     - [License](#license)
+    - [Questions](#questions)
     
     ## Installation
     
@@ -88,7 +109,7 @@ inquirer
     
     ## License
     
-     ${data.license} If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
+     This project is licensed under the ${data.license} license.
     
     ---
     
